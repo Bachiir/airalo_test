@@ -12,6 +12,7 @@ Files:
 **api_test.robot**: This file contains the Robot Framework test cases for interacting with the Airalo Partner API.
 
 **requirements.txt**: This file contains the required dependencies for the tests to run.
+command line to execute requirements.txt : **pip install -r requirements.txt**
 
 Prerequisites:
 You will need the following installed prior to executing the tests:
