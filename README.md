@@ -27,3 +27,33 @@ For ui_tests.robot: **robot -d results_ui_tests ./ui_tests.robot**
 For api_tests.robot: **robot -d results_api_tests ./api_tests.robot**
 
 Note : The -d option specifies the directory where output files (log.html, report.html, output.xml) will be saved.
+
+**Introduction of Our Test Cases**
+This project leverages Robot Framework to create API and UI test cases to verify Airalo's partner API functionality and website attributes.
+
+**API Test Cases**
+
+**Get Access Token:**
+   -  We authenticate using OAuth2 client credentials to retrieve a bearer token required for further API calls.
+
+**Submit Order:**
+   -  We simulate the purchase of 6 eSIMs with a package slug by posting to the order endpoint with a valid token.
+ 
+**Get eSIM List and Verifies:**
+   -  We retrieve the eSIM list from the account and check:
+
+There are exactly 6 eSIMs returned.
+
+Each eSIM has the expected package_slug "merhaba-7days-1gb".
+
+These tests ensure the API is operating correctly, and the data is consistent.
+
+**UI Test Case**
+Search and Verify Japan eSIM:
+We use SeleniumLibrary to help automate the following steps:
+
+Open the Airalo website.
+
+Type "Japa" into the search bar and select "Japan".
+
+Click the data pack and verify the country name, data volume, duration, and price.
