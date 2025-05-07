@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.0 on win32)" generated="2025-05-07T23:25:18.009412" rpa="false" schemaversion="5">
+<suite id="s1" name="Ui Tests" source="C:\Users\bachi\PycharmProjects\pythonProject\ui_tests.robot">
+<test id="s1-t1" name="Search And Verify Japan Esim" line="6">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-05-07T23:25:18.332440" level="INFO">Opening browser 'Chrome' to base url 'https://www.airalo.com/en'.</msg>
+<arg>${UI_BASE_URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-05-07T23:25:18.332123" elapsed="4.083437"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-05-07T23:25:22.416164" elapsed="0.063995"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>//input[@placeholder='Search data packs for 200+ countries and regions']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-05-07T23:25:22.480709" elapsed="1.376096"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-05-07T23:25:23.857483" level="INFO">Typing text 'Japa' into text field '//input[@placeholder='Search data packs for 200+ countries and regions']'.</msg>
+<arg>//input[@placeholder='Search data packs for 200+ countries and regions']</arg>
+<arg>Japa</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-05-07T23:25:23.857237" elapsed="0.252392"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-05-07T23:25:29.111375" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-05-07T23:25:24.110077" elapsed="5.001421"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//ul//li[contains(., "Japan")]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-05-07T23:25:29.111913" elapsed="0.029321"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-05-07T23:25:29.141791" level="INFO">Clicking element 'xpath=//ul//li[contains(., "Japan")]'.</msg>
+<arg>xpath=//ul//li[contains(., "Japan")]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-05-07T23:25:29.141591" elapsed="0.105025"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>//div[@class='store-container']//div[2]//a[1]//div[1]//div[3]//div[1]//button[1]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-05-07T23:25:29.247119" elapsed="1.056969"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-05-07T23:25:30.305842" level="INFO">Clicking element '//div[@class='store-container']//div[2]//a[1]//div[1]//div[3]//div[1]//button[1]'.</msg>
+<arg>//div[@class='store-container']//div[2]//a[1]//div[1]//div[3]//div[1]//button[1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-05-07T23:25:30.305399" elapsed="0.529390"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Moshi Moshi</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-05-07T23:25:30.835659" elapsed="0.198614"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-05-07T23:25:31.083356" level="INFO">Current page contains text 'Japan'.</msg>
+<arg>Japan</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-05-07T23:25:31.034769" elapsed="0.048737"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-05-07T23:25:31.120164" level="INFO">Current page contains text '1 GB'.</msg>
+<arg>1 GB</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-05-07T23:25:31.084095" elapsed="0.036196"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-05-07T23:25:31.206485" level="INFO">Current page contains text '7 days'.</msg>
+<arg>7 days</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-05-07T23:25:31.120711" elapsed="0.085958"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-05-07T23:25:31.439804" level="INFO">Current page contains text '4.50'.</msg>
+<arg>4.50</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-05-07T23:25:31.207181" elapsed="0.232740"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-05-07T23:25:31.440351" elapsed="2.186906"/>
+</kw>
+<status status="PASS" start="2025-05-07T23:25:18.330943" elapsed="15.296733"/>
+</test>
+<status status="PASS" start="2025-05-07T23:25:18.010875" elapsed="15.617996"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Ui Tests" id="s1" pass="1" fail="0" skip="0">Ui Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.0 on win32)" generated="2025-05-07T23:20:10.921719" rpa="false" schemaversion="5">
+<suite id="s1" name="Api Tests" source="C:\Users\bachi\PycharmProjects\pythonProject\api_tests.robot">
+<test id="s1-t1" name="Get Access Token" line="8">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-05-07T23:20:11.711669" level="INFO">Creating Session using : alias=airalo, url=https://sandbox-partners-api.airalo.com/v2/token, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>airalo</arg>
+<arg>${TOKEN_URL}</arg>
+<arg>verify=False</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-05-07T23:20:11.711257" elapsed="0.000757"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-07T23:20:11.713483" level="INFO">${payload} = {'client_id': '7e29e2facf83359855f746fc490443e6', 'client_secret': 'e5NNajm6jNAzrWsKoAdr41WfDiMeS1l6IcGdhmbb', 'grant_type': 'client_credentials'}</msg>
+<var>${payload}</var>
+<arg>client_id=${CLIENT_ID}</arg>
+<arg>client_secret=${CLIENT_SECRET}</arg>
+<arg>grant_type=client_credentials</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-07T23:20:11.712681" elapsed="0.000875"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-07T23:20:11.714521" level="INFO">${headers} = {'Accept': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-07T23:20:11.714166" elapsed="0.000415"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-05-07T23:20:12.130712" level="INFO">POST Request : url=https://sandbox-partners-api.airalo.com/v2/token/ 
+ path_url=/v2/token/ 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Length': '127', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=client_id=7e29e2facf83359855f746fc490443e6&amp;client_secret=e5NNajm6jNAzrWsKoAdr41WfDiMeS1l6IcGdhmbb&amp;grant_type=client_credentials 
+ </msg>
+<msg time="2025-05-07T23:20:12.131102" level="INFO">POST Response : url=https://sandbox-partners-api.airalo.com/v2/token/ 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 07 May 2025 21:14:21 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Cache-Control': 'no-cache, private', 'Content-Encoding': 'gzip', 'referrer-policy': 'same-origin', 'strict-transport-security': 'max-age=31536000; includeSubdomains; preload', 'x-content-type-options': 'nosniff', 'x-frame-options': 'SAMEORIGIN', 'x-ratelimit-limit': '5', 'x-ratelimit-remaining': '4', 'cf-cache-status': 'DYNAMIC', 'vary': 'accept-encoding', 'Set-Cookie': '__cf_bm=lcOMyDHsfp3cLbStO3IHCqoe76aXfkbDATuk7kNyjAg-1746652461-1.0.1.1-nvQZJuD9Z_8FCcPeRVwaqfuFMr3UMhdmzj6imchMPhHbnLQZZLSuzCcJ.krJJSRnd3YqMcGXisxOb0dMCdjdGUXmaQp6kV2Lr9cXeZ_D.wY; path=/; expires=Wed, 07-May-25 21:44:21 GMT; domain=.airalo.com; HttpOnly; Secure; SameSite=None, _cfuvid=1hJgtZjB7EhOVervMg.DkaQ9xyiaSqTheh_8pTXr6y0-1746652461589-0.0.1.1-604800000; path=/; domain=.airalo.com; HttpOnly; Secure; SameSite=None', 'Server': 'cloudflare', 'CF-RAY': '93c3b9fb3e9bc702-CDG'} 
+ body={"data":{"token_type":"Bearer","expires_in":86400,"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NTgiLCJqdGkiOiI4OGQyNTFiODAxOTg2MzdlNzhjMjYxZDBkOTFjOTJiMjM2ODQ1MjBlODczYzVhMjYwMWMyZDMwZTFlMWExMmY5YTViMWNiYjY1ZTFhN2M3NiIsImlhdCI6MTc0NjY1MjQ2MS41NjM3NywibmJmIjoxNzQ2NjUyNDYxLjU2Mzc3NCwiZXhwIjoxNzQ2NzM4ODYxLjU1ODcxMywic3ViIjoiIiwic2NvcGVzIjpbXX0.4AVkW6h0V1eHsyivlJCXNfZSJM-Ft1f2rfV8Kehu14g9xNnlXDv9y3xiKG101ikdpysnqCDPREFCtLnbTGwLj-Flnu_Z0QiSKzTeXVZ5c-JsrlfS0VZFjZZbf7nRCbFUz35SzxU17ZD3qAuBTJtBFiMfosv8u9PJ9eXFQ4Tdf5_xxiiROe9PcW8zI6RTjEUz5OnIqLfSqHoU3bLZBYYp2AV-9UV-cqKNUcu8rfGIf31jfCSuSgtyTflPR88n91YlgC73I7gXw5CrYxFTujfY4ZT7lWjPuvBoUANaEA8-dwVsib2fnIexPqV_Iem3Fc8I8YFEPNcAIDaiKcNHIm8UpQVwCUgXQesILx5T7-dFnS1OJhjupZceMW5K1u0V3QJFpp8sRnyJIbNiHtOHNviQSQAX3jkxRyZGYGMFacz1wIWwcIIyNd9_kSr--fmzDLM4gXwxCj_BeRmVUuH9pG09JDbJ7_OQAmtZVp5LVVtwSdjZgjKRcK_y0y3896kHjjUQcAZ57TAKPCb1TSVPRjCOB1uo_naSjZB5tfgkuCIhgAJMuH1ay73qSitfORCNlgskIsn3fHTwJU06PcLRvY4eQsJapG_ZmI7C3KDADeCysSQ5rI9wtJZn4O6mCgKt3_OLXW2AtMCva8mlRUhIphWRF0dKMfTRAaohCjKY_JuDy_o"},"meta":{"message":"success"}} 
+ </msg>
+<msg time="2025-05-07T23:20:12.131519" level="INFO">C:\Users\bachi\PycharmProjects\pythonProject\.venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'sandbox-partners-api.airalo.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-05-07T23:20:12.133304" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>airalo</arg>
+<arg>url=/</arg>
+<arg>data=${payload}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-05-07T23:20:11.715080" elapsed="0.418392"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-05-07T23:20:12.136551" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-05-07T23:20:12.134554" elapsed="0.002280"/>
+</kw>
+<kw name="To Json" owner="RequestsLibrary">
+<msg time="2025-05-07T23:20:12.137907" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<msg time="2025-05-07T23:20:12.141659" level="INFO">To JSON using : content={"data":{"token_type":"Bearer","expires_in":86400,"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NTgiLCJqdGkiOiI4OGQyNTFiODAxOTg2MzdlNzhjMjYxZDBkOTFjOTJiMjM2ODQ1MjBlODczYzVhMjYwMWMyZDMwZTFlMWExMmY5YTViMWNiYjY1ZTFhN2M3NiIsImlhdCI6MTc0NjY1MjQ2MS41NjM3NywibmJmIjoxNzQ2NjUyNDYxLjU2Mzc3NCwiZXhwIjoxNzQ2NzM4ODYxLjU1ODcxMywic3ViIjoiIiwic2NvcGVzIjpbXX0.4AVkW6h0V1eHsyivlJCXNfZSJM-Ft1f2rfV8Kehu14g9xNnlXDv9y3xiKG101ikdpysnqCDPREFCtLnbTGwLj-Flnu_Z0QiSKzTeXVZ5c-JsrlfS0VZFjZZbf7nRCbFUz35SzxU17ZD3qAuBTJtBFiMfosv8u9PJ9eXFQ4Tdf5_xxiiROe9PcW8zI6RTjEUz5OnIqLfSqHoU3bLZBYYp2AV-9UV-cqKNUcu8rfGIf31jfCSuSgtyTflPR88n91YlgC73I7gXw5CrYxFTujfY4ZT7lWjPuvBoUANaEA8-dwVsib2fnIexPqV_Iem3Fc8I8YFEPNcAIDaiKcNHIm8UpQVwCUgXQesILx5T7-dFnS1OJhjupZceMW5K1u0V3QJFpp8sRnyJIbNiHtOHNviQSQAX3jkxRyZGYGMFacz1wIWwcIIyNd9_kSr--fmzDLM4gXwxCj_BeRmVUuH9pG09JDbJ7_OQAmtZVp5LVVtwSdjZgjKRcK_y0y3896kHjjUQcAZ57TAKPCb1TSVPRjCOB1uo_naSjZB5tfgkuCIhgAJMuH1ay73qSitfORCNlgskIsn3fHTwJU06PcLRvY4eQsJapG_ZmI7C3KDADeCysSQ5rI9wtJZn4O6mCgKt3_OLXW2AtMCva8mlRUhIphWRF0dKMfTRAaohCjKY_JuDy_o"},"meta":{"message":"success"}} </msg>
+<msg time="2025-05-07T23:20:12.141834" level="INFO">To JSON using : pretty_print=False </msg>
+<msg time="2025-05-07T23:20:12.142187" level="INFO">${response_json} = {'data': {'token_type': 'Bearer', 'expires_in': 86400, 'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NTgiLCJqdGkiOiI4OGQyNTFiODAxOTg2MzdlNzhjMjYxZDBkOTFjOTJiMjM2ODQ1MjBlODczYzVhMjY...</msg>
+<var>${response_json}</var>
+<arg>${response.content}</arg>
+<doc>*DEPRECATED* Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</doc>
+<status status="PASS" start="2025-05-07T23:20:12.137779" elapsed="0.004522"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response_json['meta']['message']}</arg>
+<arg>success</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-05-07T23:20:12.143241" elapsed="0.001765"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-07T23:20:12.150009" level="INFO">${ACCESS_TOKEN} = eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NTgiLCJqdGkiOiI4OGQyNTFiODAxOTg2MzdlNzhjMjYxZDBkOTFjOTJiMjM2ODQ1MjBlODczYzVhMjYwMWMyZDMwZTFlMWExMmY5YTViMWNiYjY1ZTFhN2M3NiIsImlhdCI6MTc0NjY1MjQ2MS41NjM...</msg>
+<arg>${ACCESS_TOKEN}</arg>
+<arg>${response_json['data']['access_token']}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-07T23:20:12.145988" elapsed="0.004218"/>
+</kw>
+<doc>Obtain OAuth2 token from Airalo API using client_credentials</doc>
+<status status="PASS" start="2025-05-07T23:20:11.709667" elapsed="0.441378"/>
+</test>
+<test id="s1-t2" name="Submit Order" line="18">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-07T23:20:12.156291" level="INFO">${headers} = {'Accept': 'application/json', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NTgiLCJqdGkiOiI4OGQyNTFiODAxOTg2MzdlNzhjMjYxZDBkOTFjOTJiMjM2ODQ1MjBlODczYzVhMjYwMWMyZDMwZTFlMWE...</msg>
+<var>${headers}</var>
+<arg>Accept=application/json</arg>
+<arg>Authorization=Bearer ${ACCESS_TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-07T23:20:12.155325" elapsed="0.001096"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-07T23:20:12.158454" level="INFO">${data} = {'quantity': '6', 'package_id': 'merhaba-7days-1gb'}</msg>
+<var>${data}</var>
+<arg>quantity=${QUANTITY}</arg>
+<arg>package_id=${PACKAGE_ID}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-07T23:20:12.157458" elapsed="0.001128"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-05-07T23:20:13.464365" level="INFO">POST Request : url=https://sandbox-partners-api.airalo.com/v2/orders 
+ path_url=/v2/orders 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NTgiLCJqdGkiOiI4OGQyNTFiODAxOTg2MzdlNzhjMjYxZDBkOTFjOTJiMjM2ODQ1MjBlODczYzVhMjYwMWMyZDMwZTFlMWExMmY5YTViMWNiYjY1ZTFhN2M3NiIsImlhdCI6MTc0NjY1MjQ2MS41NjM3NywibmJmIjoxNzQ2NjUyNDYxLjU2Mzc3NCwiZXhwIjoxNzQ2NzM4ODYxLjU1ODcxMywic3ViIjoiIiwic2NvcGVzIjpbXX0.4AVkW6h0V1eHsyivlJCXNfZSJM-Ft1f2rfV8Kehu14g9xNnlXDv9y3xiKG101ikdpysnqCDPREFCtLnbTGwLj-Flnu_Z0QiSKzTeXVZ5c-JsrlfS0VZFjZZbf7nRCbFUz35SzxU17ZD3qAuBTJtBFiMfosv8u9PJ9eXFQ4Tdf5_xxiiROe9PcW8zI6RTjEUz5OnIqLfSqHoU3bLZBYYp2AV-9UV-cqKNUcu8rfGIf31jfCSuSgtyTflPR88n91YlgC73I7gXw5CrYxFTujfY4ZT7lWjPuvBoUANaEA8-dwVsib2fnIexPqV_Iem3Fc8I8YFEPNcAIDaiKcNHIm8UpQVwCUgXQesILx5T7-dFnS1OJhjupZceMW5K1u0V3QJFpp8sRnyJIbNiHtOHNviQSQAX3jkxRyZGYGMFacz1wIWwcIIyNd9_kSr--fmzDLM4gXwxCj_BeRmVUuH9pG09JDbJ7_OQAmtZVp5LVVtwSdjZgjKRcK_y0y3896kHjjUQcAZ57TAKPCb1TSVPRjCOB1uo_naSjZB5tfgkuCIhgAJMuH1ay73qSitfORCNlgskIsn3fHTwJU06PcLRvY4eQsJapG_ZmI7C3KDADeCysSQ5rI9wtJZn4O6mCgKt3_OLXW2AtMCva8mlRUhIphWRF0dKMfTRAaohCjKY_JuDy_o', 'Cookie': '__cf_bm=lcOMyDHsfp3cLbStO3IHCqoe76aXfkbDATuk7kNyjAg-1746652461-1.0.1.1-nvQZJuD9Z_8FCcPeRVwaqfuFMr3UMhdmzj6imchMPhHbnLQZZLSuzCcJ.krJJSRnd3YqMcGXisxOb0dMCdjdGUXmaQp6kV2Lr9cXeZ_D.wY; _cfuvid=1hJgtZjB7EhOVervMg.DkaQ9xyiaSqTheh_8pTXr6y0-1746652461589-0.0.1.1-604800000', 'Content-Length': '39', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=quantity=6&amp;package_id=merhaba-7days-1gb 
+ </msg>
+<msg time="2025-05-07T23:20:13.464734" level="INFO">POST Response : url=https://sandbox-partners-api.airalo.com/v2/orders 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 07 May 2025 21:14:22 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Cache-Control': 'no-cache, private', 'Content-Encoding': 'gzip', 'referrer-policy': 'same-origin', 'strict-transport-security': 'max-age=31536000; includeSubdomains; preload', 'x-content-type-options': 'nosniff', 'x-frame-options': 'SAMEORIGIN', 'cf-cache-status': 'DYNAMIC', 'vary': 'accept-encoding', 'Server': 'cloudflare', 'CF-RAY': '93c3b9fd3b04c702-CDG'} 
+ body={"data":{"id":173841,"code":"20250507-173841","currency":"USD","package_id":"merhaba-7days-1gb","quantity":6,"type":"sim","description":null,"esim_type":"Prepaid","validity":7,"package":"Merhaba-1 GB - 7 Days","data":"1 GB","price":4.5,"created_at":"2025-05-07 21:14:22","manual_installation":"&lt;p&gt;&lt;b&gt;eSIM name:&lt;\/b&gt;\u00a0Merhaba&lt;\/p&gt;&lt;p&gt;&lt;b&gt;Coverage:\u00a0&lt;\/b&gt;Turkey&lt;\/p&gt;&lt;p&gt;&lt;b&gt;To manually activate the eSIM on your eSIM capable device:&lt;\/b&gt;&lt;\/p&gt;&lt;ol&gt;&lt;li&gt;Settings &gt; Cellular\/Mobile &gt; Add Cellular\/Mobile Plan.&lt;\/li&gt;&lt;li&gt;Manually enter the SM-DP+ Address and activation code.&lt;\/li&gt;&lt;li&gt;Confirm eSIM plan details.&lt;\/li&gt;&lt;li&gt;Label the eSIM.&lt;\/li&gt;&lt;\/ol&gt;&lt;p&gt;&lt;b&gt;To access Data:&lt;\/b&gt;&lt;\/p&gt;&lt;ol&gt;&lt;li&gt;Locate the APN settings in your settings menu.&lt;\/li&gt;&lt;li&gt;Update the APN to \"airalo2\"(iOS)\/Create a new APN as \"airalo2\" (Android)\u00a0&lt;\/li&gt;&lt;li&gt;Enable data roaming.&lt;\/li&gt;&lt;\/ol&gt;","qrcode_installation":"&lt;p&gt;&lt;b&gt;eSIM name:&lt;\/b&gt;\u00a0Merhaba&lt;\/p&gt;&lt;p&gt;&lt;b&gt;Coverage:\u00a0&lt;\/b&gt;Turkey&lt;\/p&gt;&lt;p&gt;&lt;b&gt;To activate the eSIM by scanning the QR code on your eSIM capable device you need to print or display this QR code on another device:&lt;\/b&gt;&lt;\/p&gt;&lt;ol&gt;&lt;li&gt;Settings &gt; Cellular\/Mobile &gt; Add Cellular\/Mobile Plan.&lt;\/li&gt;&lt;li&gt;Scan QR code.&lt;\/li&gt;&lt;li&gt;Confirm eSIM plan details.&lt;\/li&gt;&lt;li&gt;Label the eSIM.&lt;\/li&gt;&lt;\/ol&gt;&lt;p&gt;&lt;b&gt;To access Data:&lt;\/b&gt;&lt;\/p&gt;&lt;ol&gt;&lt;li&gt;Locate the APN settings in your settings menu.&lt;\/li&gt;&lt;li&gt;Update the APN to \"airalo2\"(iOS)\/Create a new APN as \"airalo2\" (Android)&lt;\/li&gt;&lt;li&gt;Enable data roaming.&lt;\/li&gt;&lt;\/ol&gt;","installation_guides":{"en":"https:\/\/www.airalo.com\/help\/getting-started-with-airalo"},"text":null,"voice":null,"net_price":3.6,"brand_settings_name":null,"sims":[{"id":254703,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087794","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291223&amp;signature=9e4170cbb1b976eebe8324316aefec0e89c2f4f9f6f75f9fc4abb3a38bc55c11","airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"confirmation_code":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}},"msisdn":null,"direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST"},{"id":254704,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087795","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291224&amp;signature=748aa5607d1aa3274010277cc0ff26bba6b3b9c3cb283b7aba8850b7157beb8f","airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"confirmation_code":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}},"msisdn":null,"direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST"},{"id":254705,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087796","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291225&amp;signature=a19287e8f7e6e95563e86179830118af2065ac28f1cb459bd8190105a1e0084e","airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"confirmation_code":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}},"msisdn":null,"direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST"},{"id":254706,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087797","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291226&amp;signature=b6ea654b2c093d5b75e3ddf99457a95cf5bd2a52febf12a98b26409b3e92d678","airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"confirmation_code":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}},"msisdn":null,"direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST"},{"id":254707,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087798","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291227&amp;signature=0d1bda695ecacf90b6b22a31b27013cf795fdc13b143e91028411609d2d0cb4b","airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"confirmation_code":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}},"msisdn":null,"direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST"},{"id":254708,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087799","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291228&amp;signature=d43679b748a779f6f46d60c0bc07a46500c3ff1bef9efa66fcc0d4db75dd7e3e","airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"confirmation_code":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}},"msisdn":null,"direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST"}]},"meta":{"message":"success"}} 
+ </msg>
+<msg time="2025-05-07T23:20:13.465564" level="INFO">C:\Users\bachi\PycharmProjects\pythonProject\.venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'sandbox-partners-api.airalo.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-05-07T23:20:13.467300" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>airalo</arg>
+<arg>${ORDER_URL}</arg>
+<arg>data=${data}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-05-07T23:20:12.159464" elapsed="1.308058"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-05-07T23:20:13.470386" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.468578" elapsed="0.002076"/>
+</kw>
+<kw name="To Json" owner="RequestsLibrary">
+<msg time="2025-05-07T23:20:13.471730" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<msg time="2025-05-07T23:20:13.475645" level="INFO">To JSON using : content={"data":{"id":173841,"code":"20250507-173841","currency":"USD","package_id":"merhaba-7days-1gb","quantity":6,"type":"sim","description":null,"esim_type":"Prepaid","validity":7,"package":"Merhaba-1 GB - 7 Days","data":"1 GB","price":4.5,"created_at":"2025-05-07 21:14:22","manual_installation":"&lt;p&gt;&lt;b&gt;eSIM name:&lt;\/b&gt;\u00a0Merhaba&lt;\/p&gt;&lt;p&gt;&lt;b&gt;Coverage:\u00a0&lt;\/b&gt;Turkey&lt;\/p&gt;&lt;p&gt;&lt;b&gt;To manually activate the eSIM on your eSIM capable device:&lt;\/b&gt;&lt;\/p&gt;&lt;ol&gt;&lt;li&gt;Settings &gt; Cellular\/Mobile &gt; Add Cellular\/Mobile Plan.&lt;\/li&gt;&lt;li&gt;Manually enter the SM-DP+ Address and activation code.&lt;\/li&gt;&lt;li&gt;Confirm eSIM plan details.&lt;\/li&gt;&lt;li&gt;Label the eSIM.&lt;\/li&gt;&lt;\/ol&gt;&lt;p&gt;&lt;b&gt;To access Data:&lt;\/b&gt;&lt;\/p&gt;&lt;ol&gt;&lt;li&gt;Locate the APN settings in your settings menu.&lt;\/li&gt;&lt;li&gt;Update the APN to \"airalo2\"(iOS)\/Create a new APN as \"airalo2\" (Android)\u00a0&lt;\/li&gt;&lt;li&gt;Enable data roaming.&lt;\/li&gt;&lt;\/ol&gt;","qrcode_installation":"&lt;p&gt;&lt;b&gt;eSIM name:&lt;\/b&gt;\u00a0Merhaba&lt;\/p&gt;&lt;p&gt;&lt;b&gt;Coverage:\u00a0&lt;\/b&gt;Turkey&lt;\/p&gt;&lt;p&gt;&lt;b&gt;To activate the eSIM by scanning the QR code on your eSIM capable device you need to print or display this QR code on another device:&lt;\/b&gt;&lt;\/p&gt;&lt;ol&gt;&lt;li&gt;Settings &gt; Cellular\/Mobile &gt; Add Cellular\/Mobile Plan.&lt;\/li&gt;&lt;li&gt;Scan QR code.&lt;\/li&gt;&lt;li&gt;Confirm eSIM plan details.&lt;\/li&gt;&lt;li&gt;Label the eSIM.&lt;\/li&gt;&lt;\/ol&gt;&lt;p&gt;&lt;b&gt;To access Data:&lt;\/b&gt;&lt;\/p&gt;&lt;ol&gt;&lt;li&gt;Locate the APN settings in your settings menu.&lt;\/li&gt;&lt;li&gt;Update the APN to \"airalo2\"(iOS)\/Create a new APN as \"airalo2\" (Android)&lt;\/li&gt;&lt;li&gt;Enable data roaming.&lt;\/li&gt;&lt;\/ol&gt;","installation_guides":{"en":"https:\/\/www.airalo.com\/help\/getting-started-with-airalo"},"text":null,"voice":null,"net_price":3.6,"brand_settings_name":null,"sims":[{"id":254703,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087794","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291223&amp;signature=9e4170cbb1b976eebe8324316aefec0e89c2f4f9f6f75f9fc4abb3a38bc55c11","airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"confirmation_code":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}},"msisdn":null,"direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST"},{"id":254704,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087795","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291224&amp;signature=748aa5607d1aa3274010277cc0ff26bba6b3b9c3cb283b7aba8850b7157beb8f","airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"confirmation_code":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}},"msisdn":null,"direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST"},{"id":254705,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087796","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291225&amp;signature=a19287e8f7e6e95563e86179830118af2065ac28f1cb459bd8190105a1e0084e","airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"confirmation_code":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}},"msisdn":null,"direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST"},{"id":254706,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087797","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291226&amp;signature=b6ea654b2c093d5b75e3ddf99457a95cf5bd2a52febf12a98b26409b3e92d678","airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"confirmation_code":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}},"msisdn":null,"direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST"},{"id":254707,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087798","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291227&amp;signature=0d1bda695ecacf90b6b22a31b27013cf795fdc13b143e91028411609d2d0cb4b","airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"confirmation_code":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}},"msisdn":null,"direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST"},{"id":254708,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087799","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291228&amp;signature=d43679b748a779f6f46d60c0bc07a46500c3ff1bef9efa66fcc0d4db75dd7e3e","airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"confirmation_code":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}},"msisdn":null,"direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST"}]},"meta":{"message":"success"}} </msg>
+<msg time="2025-05-07T23:20:13.476017" level="INFO">To JSON using : pretty_print=False </msg>
+<msg time="2025-05-07T23:20:13.476603" level="INFO">${json} = {'data': {'id': 173841, 'code': '20250507-173841', 'currency': 'USD', 'package_id': 'merhaba-7days-1gb', 'quantity': 6, 'type': 'sim', 'description': None, 'esim_type': 'Prepaid', 'validity': 7, 'pack...</msg>
+<var>${json}</var>
+<arg>${response.content}</arg>
+<doc>*DEPRECATED* Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.471600" elapsed="0.005128"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-07T23:20:13.478615" level="INFO">{'data': {'id': 173841, 'code': '20250507-173841', 'currency': 'USD', 'package_id': 'merhaba-7days-1gb', 'quantity': 6, 'type': 'sim', 'description': None, 'esim_type': 'Prepaid', 'validity': 7, 'package': 'Merhaba-1 GB - 7 Days', 'data': '1 GB', 'price': 4.5, 'created_at': '2025-05-07 21:14:22', 'manual_installation': '&lt;p&gt;&lt;b&gt;eSIM name:&lt;/b&gt;\xa0Merhaba&lt;/p&gt;&lt;p&gt;&lt;b&gt;Coverage:\xa0&lt;/b&gt;Turkey&lt;/p&gt;&lt;p&gt;&lt;b&gt;To manually activate the eSIM on your eSIM capable device:&lt;/b&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Settings &gt; Cellular/Mobile &gt; Add Cellular/Mobile Plan.&lt;/li&gt;&lt;li&gt;Manually enter the SM-DP+ Address and activation code.&lt;/li&gt;&lt;li&gt;Confirm eSIM plan details.&lt;/li&gt;&lt;li&gt;Label the eSIM.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;b&gt;To access Data:&lt;/b&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Locate the APN settings in your settings menu.&lt;/li&gt;&lt;li&gt;Update the APN to "airalo2"(iOS)/Create a new APN as "airalo2" (Android)\xa0&lt;/li&gt;&lt;li&gt;Enable data roaming.&lt;/li&gt;&lt;/ol&gt;', 'qrcode_installation': '&lt;p&gt;&lt;b&gt;eSIM name:&lt;/b&gt;\xa0Merhaba&lt;/p&gt;&lt;p&gt;&lt;b&gt;Coverage:\xa0&lt;/b&gt;Turkey&lt;/p&gt;&lt;p&gt;&lt;b&gt;To activate the eSIM by scanning the QR code on your eSIM capable device you need to print or display this QR code on another device:&lt;/b&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Settings &gt; Cellular/Mobile &gt; Add Cellular/Mobile Plan.&lt;/li&gt;&lt;li&gt;Scan QR code.&lt;/li&gt;&lt;li&gt;Confirm eSIM plan details.&lt;/li&gt;&lt;li&gt;Label the eSIM.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;b&gt;To access Data:&lt;/b&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Locate the APN settings in your settings menu.&lt;/li&gt;&lt;li&gt;Update the APN to "airalo2"(iOS)/Create a new APN as "airalo2" (Android)&lt;/li&gt;&lt;li&gt;Enable data roaming.&lt;/li&gt;&lt;/ol&gt;', 'installation_guides': {'en': 'https://www.airalo.com/help/getting-started-with-airalo'}, 'text': None, 'voice': None, 'net_price': 3.6, 'brand_settings_name': None, 'sims': [{'id': 254703, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087794', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'qrcode': 'LPA:1$lpa.airalo.com$TEST', 'qrcode_url': 'https://sandbox.airalo.com/qr?expires=1832966062&amp;id=291223&amp;signature=9e4170cbb1b976eebe8324316aefec0e89c2f4f9f6f75f9fc4abb3a38bc55c11', 'airalo_code': None, 'apn_type': 'manual', 'apn_value': 'airalo2', 'is_roaming': True, 'confirmation_code': None, 'apn': {'ios': {'apn_type': 'manual', 'apn_value': 'airalo2'}, 'android': {'apn_type': 'manual', 'apn_value': 'airalo2'}}, 'msisdn': None, 'direct_apple_installation_url': 'https://esimsetup.apple.com/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST'}, {'id': 254704, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087795', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'qrcode': 'LPA:1$lpa.airalo.com$TEST', 'qrcode_url': 'https://sandbox.airalo.com/qr?expires=1832966062&amp;id=291224&amp;signature=748aa5607d1aa3274010277cc0ff26bba6b3b9c3cb283b7aba8850b7157beb8f', 'airalo_code': None, 'apn_type': 'manual', 'apn_value': 'airalo2', 'is_roaming': True, 'confirmation_code': None, 'apn': {'ios': {'apn_type': 'manual', 'apn_value': 'airalo2'}, 'android': {'apn_type': 'manual', 'apn_value': 'airalo2'}}, 'msisdn': None, 'direct_apple_installation_url': 'https://esimsetup.apple.com/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST'}, {'id': 254705, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087796', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'qrcode': 'LPA:1$lpa.airalo.com$TEST', 'qrcode_url': 'https://sandbox.airalo.com/qr?expires=1832966062&amp;id=291225&amp;signature=a19287e8f7e6e95563e86179830118af2065ac28f1cb459bd8190105a1e0084e', 'airalo_code': None, 'apn_type': 'manual', 'apn_value': 'airalo2', 'is_roaming': True, 'confirmation_code': None, 'apn': {'ios': {'apn_type': 'manual', 'apn_value': 'airalo2'}, 'android': {'apn_type': 'manual', 'apn_value': 'airalo2'}}, 'msisdn': None, 'direct_apple_installation_url': 'https://esimsetup.apple.com/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST'}, {'id': 254706, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087797', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'qrcode': 'LPA:1$lpa.airalo.com$TEST', 'qrcode_url': 'https://sandbox.airalo.com/qr?expires=1832966062&amp;id=291226&amp;signature=b6ea654b2c093d5b75e3ddf99457a95cf5bd2a52febf12a98b26409b3e92d678', 'airalo_code': None, 'apn_type': 'manual', 'apn_value': 'airalo2', 'is_roaming': True, 'confirmation_code': None, 'apn': {'ios': {'apn_type': 'manual', 'apn_value': 'airalo2'}, 'android': {'apn_type': 'manual', 'apn_value': 'airalo2'}}, 'msisdn': None, 'direct_apple_installation_url': 'https://esimsetup.apple.com/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST'}, {'id': 254707, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087798', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'qrcode': 'LPA:1$lpa.airalo.com$TEST', 'qrcode_url': 'https://sandbox.airalo.com/qr?expires=1832966062&amp;id=291227&amp;signature=0d1bda695ecacf90b6b22a31b27013cf795fdc13b143e91028411609d2d0cb4b', 'airalo_code': None, 'apn_type': 'manual', 'apn_value': 'airalo2', 'is_roaming': True, 'confirmation_code': None, 'apn': {'ios': {'apn_type': 'manual', 'apn_value': 'airalo2'}, 'android': {'apn_type': 'manual', 'apn_value': 'airalo2'}}, 'msisdn': None, 'direct_apple_installation_url': 'https://esimsetup.apple.com/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST'}, {'id': 254708, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087799', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'qrcode': 'LPA:1$lpa.airalo.com$TEST', 'qrcode_url': 'https://sandbox.airalo.com/qr?expires=1832966062&amp;id=291228&amp;signature=d43679b748a779f6f46d60c0bc07a46500c3ff1bef9efa66fcc0d4db75dd7e3e', 'airalo_code': None, 'apn_type': 'manual', 'apn_value': 'airalo2', 'is_roaming': True, 'confirmation_code': None, 'apn': {'ios': {'apn_type': 'manual', 'apn_value': 'airalo2'}, 'android': {'apn_type': 'manual', 'apn_value': 'airalo2'}}, 'msisdn': None, 'direct_apple_installation_url': 'https://esimsetup.apple.com/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST'}]}, 'meta': {'message': 'success'}}</msg>
+<arg>${json}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.477772" elapsed="0.001294"/>
+</kw>
+<doc>Submit an order using valid token</doc>
+<status status="PASS" start="2025-05-07T23:20:12.153696" elapsed="1.326306"/>
+</test>
+<test id="s1-t3" name="Get eSIM List and Verify" line="31">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-07T23:20:13.485788" level="INFO">${headers} = {'Accept': 'application/json', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NTgiLCJqdGkiOiI4OGQyNTFiODAxOTg2MzdlNzhjMjYxZDBkOTFjOTJiMjM2ODQ1MjBlODczYzVhMjYwMWMyZDMwZTFlMWE...</msg>
+<var>${headers}</var>
+<arg>Accept=application/json</arg>
+<arg>Authorization=Bearer ${ACCESS_TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.484734" elapsed="0.001197"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-07T23:20:13.488048" level="INFO">${url} = https://sandbox-partners-api.airalo.com/v2/sims?limit=6&amp;page=1</msg>
+<var>${url}</var>
+<arg>${eSIM_URL}?limit=6&amp;page=1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.486987" elapsed="0.001208"/>
+</kw>
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2025-05-07T23:20:13.489331" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2025-05-07T23:20:13.870727" level="INFO">GET Request : url=https://sandbox-partners-api.airalo.com/v2/sims?limit=6&amp;page=1 
+ path_url=/v2/sims?limit=6&amp;page=1 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NTgiLCJqdGkiOiI4OGQyNTFiODAxOTg2MzdlNzhjMjYxZDBkOTFjOTJiMjM2ODQ1MjBlODczYzVhMjYwMWMyZDMwZTFlMWExMmY5YTViMWNiYjY1ZTFhN2M3NiIsImlhdCI6MTc0NjY1MjQ2MS41NjM3NywibmJmIjoxNzQ2NjUyNDYxLjU2Mzc3NCwiZXhwIjoxNzQ2NzM4ODYxLjU1ODcxMywic3ViIjoiIiwic2NvcGVzIjpbXX0.4AVkW6h0V1eHsyivlJCXNfZSJM-Ft1f2rfV8Kehu14g9xNnlXDv9y3xiKG101ikdpysnqCDPREFCtLnbTGwLj-Flnu_Z0QiSKzTeXVZ5c-JsrlfS0VZFjZZbf7nRCbFUz35SzxU17ZD3qAuBTJtBFiMfosv8u9PJ9eXFQ4Tdf5_xxiiROe9PcW8zI6RTjEUz5OnIqLfSqHoU3bLZBYYp2AV-9UV-cqKNUcu8rfGIf31jfCSuSgtyTflPR88n91YlgC73I7gXw5CrYxFTujfY4ZT7lWjPuvBoUANaEA8-dwVsib2fnIexPqV_Iem3Fc8I8YFEPNcAIDaiKcNHIm8UpQVwCUgXQesILx5T7-dFnS1OJhjupZceMW5K1u0V3QJFpp8sRnyJIbNiHtOHNviQSQAX3jkxRyZGYGMFacz1wIWwcIIyNd9_kSr--fmzDLM4gXwxCj_BeRmVUuH9pG09JDbJ7_OQAmtZVp5LVVtwSdjZgjKRcK_y0y3896kHjjUQcAZ57TAKPCb1TSVPRjCOB1uo_naSjZB5tfgkuCIhgAJMuH1ay73qSitfORCNlgskIsn3fHTwJU06PcLRvY4eQsJapG_ZmI7C3KDADeCysSQ5rI9wtJZn4O6mCgKt3_OLXW2AtMCva8mlRUhIphWRF0dKMfTRAaohCjKY_JuDy_o', 'Cookie': '__cf_bm=lcOMyDHsfp3cLbStO3IHCqoe76aXfkbDATuk7kNyjAg-1746652461-1.0.1.1-nvQZJuD9Z_8FCcPeRVwaqfuFMr3UMhdmzj6imchMPhHbnLQZZLSuzCcJ.krJJSRnd3YqMcGXisxOb0dMCdjdGUXmaQp6kV2Lr9cXeZ_D.wY; _cfuvid=1hJgtZjB7EhOVervMg.DkaQ9xyiaSqTheh_8pTXr6y0-1746652461589-0.0.1.1-604800000'} 
+ body=None 
+ </msg>
+<msg time="2025-05-07T23:20:13.871087" level="INFO">GET Response : url=https://sandbox-partners-api.airalo.com/v2/sims?limit=6&amp;page=1 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 07 May 2025 21:14:23 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Cache-Control': 'no-cache, private', 'Content-Encoding': 'gzip', 'referrer-policy': 'same-origin', 'strict-transport-security': 'max-age=31536000; includeSubdomains; preload', 'x-content-type-options': 'nosniff', 'x-frame-options': 'SAMEORIGIN', 'cf-cache-status': 'DYNAMIC', 'vary': 'accept-encoding', 'Server': 'cloudflare', 'CF-RAY': '93c3ba058ea7c702-CDG'} 
+ body={"data":[{"id":254708,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087799","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","confirmation_code":null,"qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291228&amp;signature=d43679b748a779f6f46d60c0bc07a46500c3ff1bef9efa66fcc0d4db75dd7e3e","direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST","voucher_code":null,"airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"brand_settings_name":null,"msisdn":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}}},{"id":254707,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087798","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","confirmation_code":null,"qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291227&amp;signature=0d1bda695ecacf90b6b22a31b27013cf795fdc13b143e91028411609d2d0cb4b","direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST","voucher_code":null,"airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"brand_settings_name":null,"msisdn":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}}},{"id":254706,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087797","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","confirmation_code":null,"qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291226&amp;signature=b6ea654b2c093d5b75e3ddf99457a95cf5bd2a52febf12a98b26409b3e92d678","direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST","voucher_code":null,"airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"brand_settings_name":null,"msisdn":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}}},{"id":254705,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087796","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","confirmation_code":null,"qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291225&amp;signature=a19287e8f7e6e95563e86179830118af2065ac28f1cb459bd8190105a1e0084e","direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST","voucher_code":null,"airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"brand_settings_name":null,"msisdn":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}}},{"id":254704,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087795","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","confirmation_code":null,"qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291224&amp;signature=748aa5607d1aa3274010277cc0ff26bba6b3b9c3cb283b7aba8850b7157beb8f","direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST","voucher_code":null,"airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"brand_settings_name":null,"msisdn":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}}},{"id":254703,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087794","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","confirmation_code":null,"qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291223&amp;signature=9e4170cbb1b976eebe8324316aefec0e89c2f4f9f6f75f9fc4abb3a38bc55c11","direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST","voucher_code":null,"airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"brand_settings_name":null,"msisdn":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}}}],"links":{"first":"https:\/\/sandbox-partners-api.airalo.com\/v2\/sims?limit=6&amp;page=1","last":"https:\/\/sandbox-partners-api.airalo.com\/v2\/sims?limit=6&amp;page=1929","prev":null,"next":"https:\/\/sandbox-partners-api.airalo.com\/v2\/sims?limit=6&amp;page=2"},"meta":{"message":"success","current_page":1,"from":1,"last_page":1929,"path":"https:\/\/sandbox-partners-api.airalo.com\/v2\/sims","per_page":"6","to":6,"total":11569}} 
+ </msg>
+<msg time="2025-05-07T23:20:13.871461" level="INFO">C:\Users\bachi\PycharmProjects\pythonProject\.venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'sandbox-partners-api.airalo.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-05-07T23:20:13.873152" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>airalo</arg>
+<arg>${url}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.489211" elapsed="0.384106"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-05-07T23:20:13.876141" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.874355" elapsed="0.002039"/>
+</kw>
+<kw name="To Json" owner="RequestsLibrary">
+<msg time="2025-05-07T23:20:13.877559" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<msg time="2025-05-07T23:20:13.881323" level="INFO">To JSON using : content={"data":[{"id":254708,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087799","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","confirmation_code":null,"qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291228&amp;signature=d43679b748a779f6f46d60c0bc07a46500c3ff1bef9efa66fcc0d4db75dd7e3e","direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST","voucher_code":null,"airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"brand_settings_name":null,"msisdn":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}}},{"id":254707,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087798","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","confirmation_code":null,"qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291227&amp;signature=0d1bda695ecacf90b6b22a31b27013cf795fdc13b143e91028411609d2d0cb4b","direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST","voucher_code":null,"airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"brand_settings_name":null,"msisdn":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}}},{"id":254706,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087797","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","confirmation_code":null,"qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291226&amp;signature=b6ea654b2c093d5b75e3ddf99457a95cf5bd2a52febf12a98b26409b3e92d678","direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST","voucher_code":null,"airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"brand_settings_name":null,"msisdn":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}}},{"id":254705,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087796","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","confirmation_code":null,"qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291225&amp;signature=a19287e8f7e6e95563e86179830118af2065ac28f1cb459bd8190105a1e0084e","direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST","voucher_code":null,"airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"brand_settings_name":null,"msisdn":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}}},{"id":254704,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087795","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","confirmation_code":null,"qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291224&amp;signature=748aa5607d1aa3274010277cc0ff26bba6b3b9c3cb283b7aba8850b7157beb8f","direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST","voucher_code":null,"airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"brand_settings_name":null,"msisdn":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}}},{"id":254703,"created_at":"2025-05-07 21:14:22","iccid":"894000000000087794","lpa":"lpa.airalo.com","imsis":null,"matching_id":"TEST","confirmation_code":null,"qrcode":"LPA:1$lpa.airalo.com$TEST","qrcode_url":"https:\/\/sandbox.airalo.com\/qr?expires=1832966062&amp;id=291223&amp;signature=9e4170cbb1b976eebe8324316aefec0e89c2f4f9f6f75f9fc4abb3a38bc55c11","direct_apple_installation_url":"https:\/\/esimsetup.apple.com\/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST","voucher_code":null,"airalo_code":null,"apn_type":"manual","apn_value":"airalo2","is_roaming":true,"brand_settings_name":null,"msisdn":null,"apn":{"ios":{"apn_type":"manual","apn_value":"airalo2"},"android":{"apn_type":"manual","apn_value":"airalo2"}}}],"links":{"first":"https:\/\/sandbox-partners-api.airalo.com\/v2\/sims?limit=6&amp;page=1","last":"https:\/\/sandbox-partners-api.airalo.com\/v2\/sims?limit=6&amp;page=1929","prev":null,"next":"https:\/\/sandbox-partners-api.airalo.com\/v2\/sims?limit=6&amp;page=2"},"meta":{"message":"success","current_page":1,"from":1,"last_page":1929,"path":"https:\/\/sandbox-partners-api.airalo.com\/v2\/sims","per_page":"6","to":6,"total":11569}} </msg>
+<msg time="2025-05-07T23:20:13.881606" level="INFO">To JSON using : pretty_print=False </msg>
+<msg time="2025-05-07T23:20:13.882127" level="INFO">${json} = {'data': [{'id': 254708, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087799', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'confirmation_code': None, 'qrcode': 'LPA:1$...</msg>
+<var>${json}</var>
+<arg>${response.content}</arg>
+<doc>*DEPRECATED* Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.877440" elapsed="0.004804"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Full Response:\n${json}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.883210" elapsed="0.008074"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-05-07T23:20:13.893323" level="INFO">${esims} = [{'id': 254708, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087799', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'confirmation_code': None, 'qrcode': 'LPA:1$lpa.airal...</msg>
+<var>${esims}</var>
+<arg>${json}</arg>
+<arg>data</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.892300" elapsed="0.001155"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-07T23:20:13.895344" level="INFO">[{'id': 254708, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087799', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'confirmation_code': None, 'qrcode': 'LPA:1$lpa.airalo.com$TEST', 'qrcode_url': 'https://sandbox.airalo.com/qr?expires=1832966062&amp;id=291228&amp;signature=d43679b748a779f6f46d60c0bc07a46500c3ff1bef9efa66fcc0d4db75dd7e3e', 'direct_apple_installation_url': 'https://esimsetup.apple.com/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST', 'voucher_code': None, 'airalo_code': None, 'apn_type': 'manual', 'apn_value': 'airalo2', 'is_roaming': True, 'brand_settings_name': None, 'msisdn': None, 'apn': {'ios': {'apn_type': 'manual', 'apn_value': 'airalo2'}, 'android': {'apn_type': 'manual', 'apn_value': 'airalo2'}}}, {'id': 254707, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087798', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'confirmation_code': None, 'qrcode': 'LPA:1$lpa.airalo.com$TEST', 'qrcode_url': 'https://sandbox.airalo.com/qr?expires=1832966062&amp;id=291227&amp;signature=0d1bda695ecacf90b6b22a31b27013cf795fdc13b143e91028411609d2d0cb4b', 'direct_apple_installation_url': 'https://esimsetup.apple.com/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST', 'voucher_code': None, 'airalo_code': None, 'apn_type': 'manual', 'apn_value': 'airalo2', 'is_roaming': True, 'brand_settings_name': None, 'msisdn': None, 'apn': {'ios': {'apn_type': 'manual', 'apn_value': 'airalo2'}, 'android': {'apn_type': 'manual', 'apn_value': 'airalo2'}}}, {'id': 254706, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087797', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'confirmation_code': None, 'qrcode': 'LPA:1$lpa.airalo.com$TEST', 'qrcode_url': 'https://sandbox.airalo.com/qr?expires=1832966062&amp;id=291226&amp;signature=b6ea654b2c093d5b75e3ddf99457a95cf5bd2a52febf12a98b26409b3e92d678', 'direct_apple_installation_url': 'https://esimsetup.apple.com/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST', 'voucher_code': None, 'airalo_code': None, 'apn_type': 'manual', 'apn_value': 'airalo2', 'is_roaming': True, 'brand_settings_name': None, 'msisdn': None, 'apn': {'ios': {'apn_type': 'manual', 'apn_value': 'airalo2'}, 'android': {'apn_type': 'manual', 'apn_value': 'airalo2'}}}, {'id': 254705, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087796', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'confirmation_code': None, 'qrcode': 'LPA:1$lpa.airalo.com$TEST', 'qrcode_url': 'https://sandbox.airalo.com/qr?expires=1832966062&amp;id=291225&amp;signature=a19287e8f7e6e95563e86179830118af2065ac28f1cb459bd8190105a1e0084e', 'direct_apple_installation_url': 'https://esimsetup.apple.com/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST', 'voucher_code': None, 'airalo_code': None, 'apn_type': 'manual', 'apn_value': 'airalo2', 'is_roaming': True, 'brand_settings_name': None, 'msisdn': None, 'apn': {'ios': {'apn_type': 'manual', 'apn_value': 'airalo2'}, 'android': {'apn_type': 'manual', 'apn_value': 'airalo2'}}}, {'id': 254704, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087795', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'confirmation_code': None, 'qrcode': 'LPA:1$lpa.airalo.com$TEST', 'qrcode_url': 'https://sandbox.airalo.com/qr?expires=1832966062&amp;id=291224&amp;signature=748aa5607d1aa3274010277cc0ff26bba6b3b9c3cb283b7aba8850b7157beb8f', 'direct_apple_installation_url': 'https://esimsetup.apple.com/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST', 'voucher_code': None, 'airalo_code': None, 'apn_type': 'manual', 'apn_value': 'airalo2', 'is_roaming': True, 'brand_settings_name': None, 'msisdn': None, 'apn': {'ios': {'apn_type': 'manual', 'apn_value': 'airalo2'}, 'android': {'apn_type': 'manual', 'apn_value': 'airalo2'}}}, {'id': 254703, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087794', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'confirmation_code': None, 'qrcode': 'LPA:1$lpa.airalo.com$TEST', 'qrcode_url': 'https://sandbox.airalo.com/qr?expires=1832966062&amp;id=291223&amp;signature=9e4170cbb1b976eebe8324316aefec0e89c2f4f9f6f75f9fc4abb3a38bc55c11', 'direct_apple_installation_url': 'https://esimsetup.apple.com/esim_qrcode_provisioning?carddata=LPA:1$lpa.airalo.com$TEST', 'voucher_code': None, 'airalo_code': None, 'apn_type': 'manual', 'apn_value': 'airalo2', 'is_roaming': True, 'brand_settings_name': None, 'msisdn': None, 'apn': {'ios': {'apn_type': 'manual', 'apn_value': 'airalo2'}, 'android': {'apn_type': 'manual', 'apn_value': 'airalo2'}}}]</msg>
+<arg>${esims}</arg>
+<arg>console=yes</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.894428" elapsed="0.028199"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<msg time="2025-05-07T23:20:13.924398" level="INFO">Length is 6.</msg>
+<arg>${esims}</arg>
+<arg>6</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.923706" elapsed="0.000944"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Dictionary Keys" owner="Collections">
+<msg time="2025-05-07T23:20:13.927511" level="INFO">${keys} = ['airalo_code', 'apn', 'apn_type', 'apn_value', 'brand_settings_name', 'confirmation_code', 'created_at', 'direct_apple_installation_url', 'iccid', 'id', 'imsis', 'is_roaming', 'lpa', 'matching_id', '...</msg>
+<var>${keys}</var>
+<arg>${esim}</arg>
+<doc>Returns keys of the given ``dictionary`` as a list.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.926732" elapsed="0.000912"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-07T23:20:13.928757" level="INFO">['airalo_code', 'apn', 'apn_type', 'apn_value', 'brand_settings_name', 'confirmation_code', 'created_at', 'direct_apple_installation_url', 'iccid', 'id', 'imsis', 'is_roaming', 'lpa', 'matching_id', 'msisdn', 'qrcode', 'qrcode_url', 'voucher_code']</msg>
+<arg>${keys}</arg>
+<arg>console=yes</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.928110" elapsed="0.001807"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>eSIM keys:\n${keys}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.930409" elapsed="0.001671"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'package_slug' in ${keys}</arg>
+<arg>${slug}=</arg>
+<arg>Get From Dictionary</arg>
+<arg>${esim}</arg>
+<arg>package_slug</arg>
+<arg>Should Be Equal</arg>
+<arg>${slug}</arg>
+<arg>${PACKAGE_ID}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.932598" elapsed="0.001006"/>
+</kw>
+<var name="${esim}">{'id': 254708, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087799', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'confirmation_code': None, 'qrcode': 'LPA:1$lpa.airalo...</var>
+<status status="PASS" start="2025-05-07T23:20:13.926363" elapsed="0.007499"/>
+</iter>
+<iter>
+<kw name="Get Dictionary Keys" owner="Collections">
+<msg time="2025-05-07T23:20:13.935448" level="INFO">${keys} = ['airalo_code', 'apn', 'apn_type', 'apn_value', 'brand_settings_name', 'confirmation_code', 'created_at', 'direct_apple_installation_url', 'iccid', 'id', 'imsis', 'is_roaming', 'lpa', 'matching_id', '...</msg>
+<var>${keys}</var>
+<arg>${esim}</arg>
+<doc>Returns keys of the given ``dictionary`` as a list.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.934728" elapsed="0.000841"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-07T23:20:13.936597" level="INFO">['airalo_code', 'apn', 'apn_type', 'apn_value', 'brand_settings_name', 'confirmation_code', 'created_at', 'direct_apple_installation_url', 'iccid', 'id', 'imsis', 'is_roaming', 'lpa', 'matching_id', 'msisdn', 'qrcode', 'qrcode_url', 'voucher_code']</msg>
+<arg>${keys}</arg>
+<arg>console=yes</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.935970" elapsed="0.001714"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>eSIM keys:\n${keys}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.938469" elapsed="0.001825"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'package_slug' in ${keys}</arg>
+<arg>${slug}=</arg>
+<arg>Get From Dictionary</arg>
+<arg>${esim}</arg>
+<arg>package_slug</arg>
+<arg>Should Be Equal</arg>
+<arg>${slug}</arg>
+<arg>${PACKAGE_ID}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.940870" elapsed="0.000928"/>
+</kw>
+<var name="${esim}">{'id': 254707, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087798', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'confirmation_code': None, 'qrcode': 'LPA:1$lpa.airalo...</var>
+<status status="PASS" start="2025-05-07T23:20:13.934401" elapsed="0.007640"/>
+</iter>
+<iter>
+<kw name="Get Dictionary Keys" owner="Collections">
+<msg time="2025-05-07T23:20:13.943599" level="INFO">${keys} = ['airalo_code', 'apn', 'apn_type', 'apn_value', 'brand_settings_name', 'confirmation_code', 'created_at', 'direct_apple_installation_url', 'iccid', 'id', 'imsis', 'is_roaming', 'lpa', 'matching_id', '...</msg>
+<var>${keys}</var>
+<arg>${esim}</arg>
+<doc>Returns keys of the given ``dictionary`` as a list.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.942913" elapsed="0.000809"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-07T23:20:13.944780" level="INFO">['airalo_code', 'apn', 'apn_type', 'apn_value', 'brand_settings_name', 'confirmation_code', 'created_at', 'direct_apple_installation_url', 'iccid', 'id', 'imsis', 'is_roaming', 'lpa', 'matching_id', 'msisdn', 'qrcode', 'qrcode_url', 'voucher_code']</msg>
+<arg>${keys}</arg>
+<arg>console=yes</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.944144" elapsed="0.001679"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>eSIM keys:\n${keys}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.946363" elapsed="0.001728"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'package_slug' in ${keys}</arg>
+<arg>${slug}=</arg>
+<arg>Get From Dictionary</arg>
+<arg>${esim}</arg>
+<arg>package_slug</arg>
+<arg>Should Be Equal</arg>
+<arg>${slug}</arg>
+<arg>${PACKAGE_ID}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.948639" elapsed="0.000948"/>
+</kw>
+<var name="${esim}">{'id': 254706, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087797', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'confirmation_code': None, 'qrcode': 'LPA:1$lpa.airalo...</var>
+<status status="PASS" start="2025-05-07T23:20:13.942592" elapsed="0.007235"/>
+</iter>
+<iter>
+<kw name="Get Dictionary Keys" owner="Collections">
+<msg time="2025-05-07T23:20:13.951359" level="INFO">${keys} = ['airalo_code', 'apn', 'apn_type', 'apn_value', 'brand_settings_name', 'confirmation_code', 'created_at', 'direct_apple_installation_url', 'iccid', 'id', 'imsis', 'is_roaming', 'lpa', 'matching_id', '...</msg>
+<var>${keys}</var>
+<arg>${esim}</arg>
+<doc>Returns keys of the given ``dictionary`` as a list.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.950674" elapsed="0.000803"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-07T23:20:13.952489" level="INFO">['airalo_code', 'apn', 'apn_type', 'apn_value', 'brand_settings_name', 'confirmation_code', 'created_at', 'direct_apple_installation_url', 'iccid', 'id', 'imsis', 'is_roaming', 'lpa', 'matching_id', 'msisdn', 'qrcode', 'qrcode_url', 'voucher_code']</msg>
+<arg>${keys}</arg>
+<arg>console=yes</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.951887" elapsed="0.001675"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>eSIM keys:\n${keys}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.954100" elapsed="0.001755"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'package_slug' in ${keys}</arg>
+<arg>${slug}=</arg>
+<arg>Get From Dictionary</arg>
+<arg>${esim}</arg>
+<arg>package_slug</arg>
+<arg>Should Be Equal</arg>
+<arg>${slug}</arg>
+<arg>${PACKAGE_ID}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.956379" elapsed="0.000983"/>
+</kw>
+<var name="${esim}">{'id': 254705, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087796', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'confirmation_code': None, 'qrcode': 'LPA:1$lpa.airalo...</var>
+<status status="PASS" start="2025-05-07T23:20:13.950357" elapsed="0.007653"/>
+</iter>
+<iter>
+<kw name="Get Dictionary Keys" owner="Collections">
+<msg time="2025-05-07T23:20:13.959588" level="INFO">${keys} = ['airalo_code', 'apn', 'apn_type', 'apn_value', 'brand_settings_name', 'confirmation_code', 'created_at', 'direct_apple_installation_url', 'iccid', 'id', 'imsis', 'is_roaming', 'lpa', 'matching_id', '...</msg>
+<var>${keys}</var>
+<arg>${esim}</arg>
+<doc>Returns keys of the given ``dictionary`` as a list.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.958903" elapsed="0.000804"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-07T23:20:13.960726" level="INFO">['airalo_code', 'apn', 'apn_type', 'apn_value', 'brand_settings_name', 'confirmation_code', 'created_at', 'direct_apple_installation_url', 'iccid', 'id', 'imsis', 'is_roaming', 'lpa', 'matching_id', 'msisdn', 'qrcode', 'qrcode_url', 'voucher_code']</msg>
+<arg>${keys}</arg>
+<arg>console=yes</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.960123" elapsed="0.001641"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>eSIM keys:\n${keys}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.962271" elapsed="0.001644"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'package_slug' in ${keys}</arg>
+<arg>${slug}=</arg>
+<arg>Get From Dictionary</arg>
+<arg>${esim}</arg>
+<arg>package_slug</arg>
+<arg>Should Be Equal</arg>
+<arg>${slug}</arg>
+<arg>${PACKAGE_ID}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.964416" elapsed="0.000946"/>
+</kw>
+<var name="${esim}">{'id': 254704, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087795', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'confirmation_code': None, 'qrcode': 'LPA:1$lpa.airalo...</var>
+<status status="PASS" start="2025-05-07T23:20:13.958579" elapsed="0.007023"/>
+</iter>
+<iter>
+<kw name="Get Dictionary Keys" owner="Collections">
+<msg time="2025-05-07T23:20:13.967089" level="INFO">${keys} = ['airalo_code', 'apn', 'apn_type', 'apn_value', 'brand_settings_name', 'confirmation_code', 'created_at', 'direct_apple_installation_url', 'iccid', 'id', 'imsis', 'is_roaming', 'lpa', 'matching_id', '...</msg>
+<var>${keys}</var>
+<arg>${esim}</arg>
+<doc>Returns keys of the given ``dictionary`` as a list.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.966430" elapsed="0.000781"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-07T23:20:13.968231" level="INFO">['airalo_code', 'apn', 'apn_type', 'apn_value', 'brand_settings_name', 'confirmation_code', 'created_at', 'direct_apple_installation_url', 'iccid', 'id', 'imsis', 'is_roaming', 'lpa', 'matching_id', 'msisdn', 'qrcode', 'qrcode_url', 'voucher_code']</msg>
+<arg>${keys}</arg>
+<arg>console=yes</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.967615" elapsed="0.001642"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>eSIM keys:\n${keys}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.969736" elapsed="0.001765"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'package_slug' in ${keys}</arg>
+<arg>${slug}=</arg>
+<arg>Get From Dictionary</arg>
+<arg>${esim}</arg>
+<arg>package_slug</arg>
+<arg>Should Be Equal</arg>
+<arg>${slug}</arg>
+<arg>${PACKAGE_ID}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.972043" elapsed="0.000916"/>
+</kw>
+<var name="${esim}">{'id': 254703, 'created_at': '2025-05-07 21:14:22', 'iccid': '894000000000087794', 'lpa': 'lpa.airalo.com', 'imsis': None, 'matching_id': 'TEST', 'confirmation_code': None, 'qrcode': 'LPA:1$lpa.airalo...</var>
+<status status="PASS" start="2025-05-07T23:20:13.966091" elapsed="0.007129"/>
+</iter>
+<var>${esim}</var>
+<value>@{esims}</value>
+<status status="PASS" start="2025-05-07T23:20:13.925455" elapsed="0.047915"/>
+</for>
+<doc>Ensure the list contains 6 eSIMs, and that all of them have the "merhaba-7days-1gb" package slug.</doc>
+<status status="PASS" start="2025-05-07T23:20:13.482872" elapsed="0.491511"/>
+</test>
+<status status="PASS" start="2025-05-07T23:20:10.924748" elapsed="3.053201"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Api Tests" id="s1" pass="3" fail="0" skip="0">Api Tests</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-05-07T23:20:12.137907" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<msg time="2025-05-07T23:20:13.471730" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<msg time="2025-05-07T23:20:13.489331" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2025-05-07T23:20:13.877559" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+</errors>
+</robot>
