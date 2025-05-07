@@ -20,3 +20,10 @@ You will need the following installed prior to executing the tests:
 Python Version 3.x
 
 pip (package manager for Python)
+
+**Robot execution :**
+To run a Robot Framework test, use the following command lines:
+For ui_tests.robot: **robot -d results_ui_tests ./ui_tests.robot**
+For api_tests.robot: **robot -d results_api_tests ./api_tests.robot**
+
+Note : The -d option specifies the directory where output files (log.html, report.html, output.xml) will be saved.
